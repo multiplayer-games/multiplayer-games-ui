@@ -53,16 +53,16 @@ function App() {
 
   return (
     <div className="App">
-      <input onChange={(e) => setName(e.target.value)} value={name} />
+      <input onChange={(e) => setName(e.target.value)} value={name} placeholder="Username" />
       <button onClick={() => socket.emit("login", { name })}>Login</button>
       <button onClick={() => socket.emit("create-room")}>Create Room</button>
-      <input onChange={(e) => setRoomName(e.target.value)} value={roomName} />
-      <button onClick={() => socket.emit("join-room", { id: roomName })}>Join Room</button>
+      <input onChange={(e) => setRoomName(e.target.value)} value={roomName} placeholder="Room ID" />
+      <button onClick={() => socket.emit("join-room", { roomId: roomName })}>Join Room</button>
       <button onClick={() => socket.emit("start")}>Start Game</button>
-      <div>Room Id: {gameData?.id}</div>
+      <div>Room Id: {gameData?.roomId}</div>
       {app && gameData &&  (
         <>
-          {gameData.players.filter((x: any) => !x.isYou).map((player: IPlayer, i: number) => (
+          {gameData.players.map((player: IPlayer, i: number) => (
             <Player
               key={i}
               container={app.stage}
@@ -93,21 +93,11 @@ function App() {
 
           <PText
             container={app.stage}
-            value={"Cards On The Ground: " + gameData.cardsOnTheGround.length}
+            value={"Cards On The Ground: " + gameData.cards.length}
             x={10}
             y={200}
             style={{ fontSize: 16 }}
           />
-
-          {gameData.players.filter((x: any) => x.isYou).map((player: any, i: number) => (
-            <Player
-              key={i}
-              container={app.stage}
-              playerInfo={player}
-              x={10}
-              y={420}
-            />
-          ))}
 
           <PContainer container={app.stage} x={10} y={500}>
             <PText
@@ -116,7 +106,16 @@ function App() {
               y={-20}
               style={{ fontSize: 16 }}
             />
-            {gameData.players.find((x: any) => x.isYou).cards.map((item: SelectedCard, i: number) => 
+            {gameData.players
+              .find((x: any) => x.isYou)
+              .cards
+              .sort((x: any, y: any) => {
+                const f = clubCardNames.map(x => x.substring("CLUB ".length));
+                const i1 = f.indexOf(x.value);
+                const i2 = f.indexOf(y.value);
+                return i1 - i2;
+              })
+              .map((item: SelectedCard, i: number) => 
               <Card
                 key={i}
                 container={app.stage}
@@ -136,14 +135,14 @@ function App() {
             )}
           </PContainer>
 
-          <PContainer container={app.stage} x={100} y={420}>
+          <PContainer container={app.stage} x={10} y={430}>
             <PTextButton
               container={app.stage}
               text="Bluff"
               x={0}
               onClick={() => {
                 const data = {
-                  id: gameData.id,
+                  roomId: gameData.roomId,
                   type: "BLUFF",
                 };
 
@@ -156,7 +155,7 @@ function App() {
               x={50}
               onClick={() => {
                 const data = {
-                  id: gameData.id,
+                  roomId: gameData.roomId,
                   type: "PASS",
                 };
 
@@ -169,15 +168,15 @@ function App() {
               x={100}
               onClick={() => {
                 const data = {
-                  id: gameData.id,
-                  type: "PLAY",
+                  roomId: gameData.roomId,
+                  type: "CARDS",
                   cardValue: clubCardNames[selectedCardValueIndex].split(" ")[1],
                   selectedCards: pickCards,
                 };
 
-                socket.emit("play", data, () => {
-                  setPickCards([]);
-                });
+                socket.emit("play", data);
+
+                setPickCards([]);
               }}
             />
           </PContainer>
