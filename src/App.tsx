@@ -85,6 +85,14 @@ function App() {
             />
           ))}
 
+          <PText
+            container={app.stage}
+            value={"Cards Count On The Ground: " + gameData.cards.length}
+            x={10}
+            y={240}
+            style={{ fontSize: 16 }}
+          />
+
           <PContainer container={app.stage} x={10} y={300}>
             <PText
               container={app.stage}
@@ -106,14 +114,6 @@ function App() {
               />
             ))}
           </PContainer>
-
-          <PText
-            container={app.stage}
-            value={"Cards Count On The Ground: " + gameData.cards.length}
-            x={10}
-            y={200}
-            style={{ fontSize: 16 }}
-          />
 
           <PContainer container={app.stage} x={10} y={500}>
             <PText
