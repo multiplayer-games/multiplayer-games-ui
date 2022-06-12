@@ -11,7 +11,7 @@ export interface Player {
   isTurn: boolean;
   isYou: boolean;
   cardCount: number;
-  lastMove: undefined | "PASS" | "BLUFF" | number;
+  lastMove: "NONE" | "PASS" | "BLUFF" | number;
 }
 
 export interface Card {
