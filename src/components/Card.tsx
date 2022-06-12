@@ -6,12 +6,12 @@ export type CardType = "Hearth" | "Club" | "Spade" | "Diamond";
 export type CardValue = "A" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "J" | "Q" | "K";
 
 const NAME = "cards.png";
-const START_X = 3;
-const START_Y = 3;
-const WIDTH = 49;
-const HEIGHT = 75;
-const MARGIN_RIGHT = 8.4;
-const MARGIN_BOTTOM = 9;
+const START_X = 0;
+const START_Y = 0;
+const WIDTH = 55;
+const HEIGHT = 81;
+const MARGIN_RIGHT = 2.3;
+const MARGIN_BOTTOM = 2.66;
 const CARD_TYPES: CardType[] = ["Spade", "Club", "Hearth", "Diamond"];
 const CARD_VALUES: CardValue[] = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
