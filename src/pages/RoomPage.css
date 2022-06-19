@@ -1,0 +1,40 @@
+.room-page__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-page__username {
+  font-size: 14px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.room-page__room-id {
+  font-size: 14px;
+  position: fixed;
+  top: 30px;
+  left: 10px;
+}
+
+.room-page__start-game {
+  width: 325px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.room-page__table {
+  width: 325px;
+  border-collapse: collapse;
+}
+
+.room-page__table, .room-page__table td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.room-page__table td {
+  padding: 3px;
+}

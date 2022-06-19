@@ -1,9 +1,6 @@
 import * as PIXI from 'pixi.js';
+import { CardName, CardType, CardValue } from '../models/bluff';
 import { PSpriteButton } from './PSpriteButton';
-
-export type CardName = `${CardType} ${CardValue}`;
-export type CardType = "Hearth" | "Club" | "Spade" | "Diamond";
-export type CardValue = "A" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "J" | "Q" | "K";
 
 const NAME = "cards.png";
 const START_X = 0;

@@ -1,0 +1,32 @@
+.logged-in-page__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logged-in-page__username {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+}
+
+.logged-in-page__create-room {
+  width: 325px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.logged-in-page__room-id {
+  width: 200px;
+  padding: 10px;
+
+}
+
+.logged-in-page__join-room {
+  width: 100px;
+  padding: 10px;
+
+}

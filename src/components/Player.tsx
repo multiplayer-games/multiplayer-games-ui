@@ -46,7 +46,7 @@ export function Player(props: PlayerProps) {
       />
       <PText
         container={props.container}
-        value={"Total Cards: " + props.playerInfo.cardCount}
+        value={"Total Cards: " + props.playerInfo.cards.length}
         style={textStyle}
         x={4}
         y={22}
