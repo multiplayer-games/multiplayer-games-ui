@@ -63,7 +63,7 @@ export function GamePage({ roomId, game }: GamePageProps) {
             container={app.stage}
             value={"Cards Count On The Ground: " + game.cards.length}
             x={295}
-            y={240}
+            y={cards.length > 25 ? 140 : 240}
             style={{ fontSize: 16 }}
           />
 

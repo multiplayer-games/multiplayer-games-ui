@@ -24,7 +24,7 @@ export function PContainer(props: PContainerProps) {
       props.container.removeChild(container);
       container.destroy();
     };
-  }, [props.container]);
+  }, [props.container, props.x, props.y]);
 
   const newChildren = React.Children.map(props.children, (child) => {
     if (React.isValidElement(child)) {
