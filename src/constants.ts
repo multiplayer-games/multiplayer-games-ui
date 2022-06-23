@@ -1,6 +1,6 @@
 import { CardName } from "./models/bluff";
 
-export const HOST = "ws://localhost:3001";
+export const HOST = "wss://node-js-board-games-api.herokuapp.com";
 export const ClubCardNames: CardName[] = [
   "Club A",
   "Club 2",
