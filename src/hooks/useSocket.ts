@@ -27,7 +27,7 @@ export function useSocket(options: SocketOptions) {
   const [socket, setSocket] = useState<Socket>();
 
   useEffect(() => {
-    const client = io(HOST);
+    const client = io(HOST, { transports: ["websocket"] });
     client.on("connect", options.onConnected);
     client.on("notify", options.onNotify);
 
